@@ -1,0 +1,16 @@
+---
+## stayajit.baral.89@gmail.com
+## install git
+
+- hosts: all
+  become_user: root
+  
+  vars:
+    - packages: ["git"]
+    
+  tasks:
+    - name: Installing {{ packages }}
+      yum:
+        name: "{{ item }}"
+        state: present
+      with_items: "{{ packages }}"
